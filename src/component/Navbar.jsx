@@ -9,14 +9,13 @@ import Menu from "./Menu";
 import Cart from "./Cart";
 import Logout from "../utils/Logout";
 
-import decode from "jwt-decode";
+import jwtDecode from "jwt-decode";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, selectedUser } from "../features/UserSlice";
 import { CartItems, Wish } from "../features/CartandWish";
 
 const Navbar = () => {
   const user = useSelector(selectedUser);
-  console.log(user)
   const [out, setOut] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -37,9 +36,9 @@ const Navbar = () => {
     }
 
     if (token) {
-      const decodedToken = decode(token);
+      const decodedToken = jwtDecode(token).exp;
 
-      if (decodedToken.exp * 1000 < new Date().getTime()) {
+      if (decodedToken.exp < Date.now()) {
         loggingOut();
       }
     }

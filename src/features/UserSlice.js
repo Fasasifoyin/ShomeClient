@@ -62,7 +62,6 @@ const userSlice = createSlice({
         };
       })
       .addCase(signIn.fulfilled, (state, action) => {
-        console.log(action.payload)
         localStorage.setItem("shomeUser", JSON.stringify(action?.payload));
         return {
           ...state,

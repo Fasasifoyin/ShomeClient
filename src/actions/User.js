@@ -39,7 +39,6 @@ export const signIn = createAsyncThunk(
     try {
       const { navigate, redirect } = form;
       const { data, status } = await api.signIn(form);
-      console.log(data)
       if (status === 200) {
         toast.success("Sign in Successful");
         navigate(redirect);
