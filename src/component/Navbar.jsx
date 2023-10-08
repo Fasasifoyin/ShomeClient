@@ -86,7 +86,7 @@ const Navbar = () => {
         style={{
           height: "70px",
           backgroundColor: "rgb(47,51,58)",
-          zIndex: 99999,
+          zIndex: 50,
         }}
       >
         <Container className="h-100">
